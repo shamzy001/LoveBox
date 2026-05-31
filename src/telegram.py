@@ -251,7 +251,7 @@ def check_photo_size(photo_array):
         candidates = photo_array
     largest = max(candidates, key=lambda p: p.get("file_size", 0))
     if largest.get("file_size", 0) > _PHOTO_SIZE_LIMIT:
-        send_message(secrets.SHAH_CHAT_ID, "Photo too large (>5 MB) — send a smaller version.")
+        send_message(secrets.SENDER_CHAT_ID, "Photo too large (>5 MB) — send a smaller version.")
         return None
     return largest["file_id"]
 
@@ -282,11 +282,11 @@ _HELP = """OffenHerz commands:
 
 
 def _send_help():
-    send_message(secrets.SHAH_CHAT_ID, _HELP)
+    send_message(secrets.SENDER_CHAT_ID, _HELP)
 
 
 def _send_status():
-    """Build and send a status reply to Shah."""
+    """Build and send a status reply to the sender."""
     import network as _net
     import time
     import slideshow
@@ -317,7 +317,7 @@ def _send_status():
         "Photos: {}".format(slideshow.photo_count()),
         "Queue: {}".format(state.queue_len()),
     ]
-    send_message(secrets.SHAH_CHAT_ID, "\n".join(lines))
+    send_message(secrets.SENDER_CHAT_ID, "\n".join(lines))
 
 
 def classify_message(update):
@@ -326,7 +326,7 @@ def classify_message(update):
     if not msg:
         return None
     from_id = msg.get("from", {}).get("id") or msg.get("chat", {}).get("id")
-    if from_id != secrets.SHAH_CHAT_ID:
+    if from_id != secrets.SENDER_CHAT_ID:
         return None
     text = msg.get("text", "")
     if text and text.startswith("/status"):
@@ -437,24 +437,24 @@ async def polling_loop():
                         colour = msg.get("colour", "")
                         if colour == "off":
                             led_manager.clear_mood()
-                            send_message(secrets.SHAH_CHAT_ID,
+                            send_message(secrets.SENDER_CHAT_ID,
                                 "Mood cleared — back to warm amber.")
                         elif colour in _MOODS:
                             r, g, b = _MOODS[colour]
                             led_manager.set_mood(r, g, b)
-                            send_message(secrets.SHAH_CHAT_ID,
+                            send_message(secrets.SENDER_CHAT_ID,
                                 "Mood set to {}.".format(colour))
                         else:
-                            send_message(secrets.SHAH_CHAT_ID,
+                            send_message(secrets.SENDER_CHAT_ID,
                                 "Unknown mood. Try: rose, calm, happy, red, off")
                     elif msg["command"] == "unknown":
-                        send_message(secrets.SHAH_CHAT_ID,
+                        send_message(secrets.SENDER_CHAT_ID,
                             "Unknown command. Try /help")
                     continue
                 if msg["type"] == "photo":
                     if "document_id" in msg:
                         if msg.get("file_size", 0) > _PHOTO_SIZE_LIMIT:
-                            send_message(secrets.SHAH_CHAT_ID, "File too large (>5 MB) — send a smaller version.")
+                            send_message(secrets.SENDER_CHAT_ID, "File too large (>5 MB) — send a smaller version.")
                             continue
                         file_id = msg["document_id"]
                     else:

@@ -110,8 +110,8 @@ def show_arrived_screen(queue_depth=0):
         # Fallback to text if no arrived.jpg
         _display.set_font("cursive")
         _display.set_pen(WHITE)
-        line1 = "Shah sent you"
-        line2 = "something <3"
+        line1 = "You have a"
+        line2 = "message <3"
         line3 = "Tap to reveal"
         for i, line in enumerate([line1, line2]):
             tw = _display.measure_text(line, scale=3)

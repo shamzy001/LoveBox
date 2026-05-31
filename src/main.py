@@ -79,7 +79,7 @@ async def handle_arrived():
     display_manager.show_arrived_screen(queue_depth=state.queue_len())
     led_manager.start_pulse()
     await touch_handler.wait_for_tap()
-    telegram.send_message(secrets.SHAH_CHAT_ID, "Seen ✓")
+    telegram.send_message(secrets.SENDER_CHAT_ID, "Seen ✓")
     state.current = state.REVEALING
 
 
@@ -106,7 +106,7 @@ async def handle_reading():
             idx = touch_handler.hit_test(x, y, display_manager.REPLY_RECTS)
             if idx >= 0:
                 label = display_manager.REPLY_LABELS[idx]
-                ok = telegram.send_message(secrets.SHAH_CHAT_ID, label)
+                ok = telegram.send_message(secrets.SENDER_CHAT_ID, label)
                 if not ok:
                     display_manager.show_toast("Couldn't send — try again")
                     await asyncio.sleep_ms(2500)
