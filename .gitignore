@@ -11,6 +11,9 @@ Utils/transfered/
 # Personal arrival screen variant
 src/arrived2.jpg
 
+# Internal planning/spec files
+openspec/
+
 # Claude Code session data
 .claude/
 
