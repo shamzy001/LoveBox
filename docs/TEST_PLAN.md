@@ -1,4 +1,4 @@
-# LoveBox Test Plan
+# OffenherzBox Test Plan
 
 Physical and software tests to verify the full V2 stack. Run in order — earlier sections catch issues that would confuse later ones.
 
@@ -9,7 +9,7 @@ Physical and software tests to verify the full V2 stack. Run in order — earlie
 | # | Test | Expected |
 |---|------|----------|
 | 1.1 | Cold power-on with known WiFi in range | Boot screen → "Connecting…" → SSID + IP shown for 2s → slideshow starts |
-| 1.2 | Cold power-on with NO known WiFi in range | Boot screen → retry attempt → WiFi Setup screen with "LoveBox-Setup" and "192.168.4.1" |
+| 1.2 | Cold power-on with NO known WiFi in range | Boot screen → retry attempt → WiFi Setup screen with "OffenherzBox-Setup" and "192.168.4.1" |
 | 1.3 | Power-cycle mid-slideshow | Clean boot, no errors, slideshow resumes within 10s |
 | 1.4 | Power-cycle while in READING state | Clean boot, no leftover state — returns to IDLE/slideshow |
 | 1.5 | Boot with SD card removed | **Known limitation:** `wifi_learned.json` is on the SD card; `secrets.WIFI_NETWORKS` is empty by design. No learned networks → WiFi connect fails → AP portal → timeout → "No WiFi" banner. Device is stuck until SD is reinserted or a network is hardcoded in `secrets.py`. No crash; this is an accepted consequence of storing all credentials on SD. |
@@ -34,10 +34,10 @@ Physical and software tests to verify the full V2 stack. Run in order — earlie
 | # | Test | Expected |
 |---|------|----------|
 | 3.1 | Remove all known networks from `secrets.py`, boot device | WiFi Setup screen appears within ~35s |
-| 3.2 | Connect phone to "LoveBox-Setup" (open, no password) | Phone joins network |
+| 3.2 | Connect phone to "OffenherzBox-Setup" (open, no password) | Phone joins network |
 | 3.3 | Check for "Sign in to network" notification on Android | Notification appears (may not appear if Private DNS is active — see 3.4) |
 | 3.4 | Manually navigate to `http://192.168.4.1` in browser | Form loads with SSID + password fields |
-| 3.5 | Submit valid credentials | "Saved! LoveBox is restarting…" shown in browser; device reboots |
+| 3.5 | Submit valid credentials | "Saved! OffenherzBox is restarting…" shown in browser; device reboots |
 | 3.6 | After reboot, confirm device connects to submitted network | Boot screen shows correct SSID |
 | 3.7 | Check SD card: `wifi_override.json` gone, `wifi_learned.json` exists | Credentials promoted; override cleaned up |
 | 3.8 | Power-cycle and confirm device connects automatically (no portal) | Learned network used; portal not triggered |

@@ -1,8 +1,10 @@
-# LoveBox
+# OffenherzBox
 
 A Telegram-driven desk companion built on the [Pimoroni Presto](https://shop.pimoroni.com/products/presto) (RP2350). Always-on rotating photo frame that lights up and prompts for a tap when a message arrives.
 
-![LoveBox device showing slideshow]
+![OffenherzBox device showing slideshow]
+
+> **OffenherzBox** is a mashup of German and English. *Offenherzig* (oh-fen-HERTS-ig) is a real German word meaning *open-hearted* — frank, warm, candid. The name nods to the open-source spirit of the build and the fact that it started as a personal attempt to replicate — and improve on — the commercial [LoveBox](https://en.lovebox.love/) product. *Herz* = heart. *Box* = box. You get the idea.
 
 ---
 
@@ -12,7 +14,7 @@ A Telegram-driven desk companion built on the [Pimoroni Presto](https://shop.pim
 - **Message delivery** — Shah sends a text, photo, or GIF via Telegram; the device LEDs pulse and a "tap to reveal" screen appears
 - **Reply buttons** — Beth taps to read, then replies with a preset button ("Love it", "Haha", "Call me!"); Shah gets a read receipt ("Seen ✓") the moment Beth taps
 - **LED mood system** — `/mood <colour>` sets the ambient LED glow and notification pulse colour, persisted across reboots
-- **WiFi AP portal** — if no known network is found on boot, the device broadcasts `LoveBox-Setup` and serves a credential form at `http://192.168.4.1`; learned networks are saved to the SD card automatically
+- **WiFi AP portal** — if no known network is found on boot, the device broadcasts `OffenherzBox-Setup` and serves a credential form at `http://192.168.4.1`; learned networks are saved to the SD card automatically
 
 ---
 
@@ -129,7 +131,7 @@ Copy everything in `src/` to the root of the Presto's flash. The device runs `bo
 
 If the device can't connect to any known network on boot, it broadcasts an open access point:
 
-- **SSID:** `LoveBox-Setup`
+- **SSID:** `OffenherzBox-Setup`
 - **URL:** `http://192.168.4.1`
 
 Connect your phone, navigate to the URL, submit your credentials. The device reboots, connects, and saves the network to the SD card — no portal needed next time at that location.

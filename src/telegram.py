@@ -269,7 +269,7 @@ _MOODS = {
     "lavender": (190, 120, 255),
 }
 
-_HELP = """LoveBox commands:
+_HELP = """OffenherzBox commands:
 
 /status — device info (WiFi, signal, uptime, photos, queue)
 
@@ -309,7 +309,7 @@ def _send_status():
     mins  = (uptime_ms % 3_600_000) // 60_000
 
     lines = [
-        "LoveBox Status",
+        "OffenherzBox Status",
         "Network: {}".format(ssid),
         "IP: {}".format(ip),
         "Signal: {}".format(signal),
