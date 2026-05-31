@@ -4,13 +4,11 @@ src/secrets.py
 # Personal photos (slideshow images — copy to SD card manually)
 photos/
 
-# Personal photos in Utils — originals, processed output, samples
+# Personal photos in Utils — originals and processed output
 Utils/originals archive/
 Utils/transfered/
-Utils/presto_photos/
 
-# Custom arrival screen images (personal)
-src/arrived.jpg
+# Personal arrival screen variant
 src/arrived2.jpg
 
 # Claude Code session data
