@@ -11,8 +11,8 @@ A Telegram-driven desk companion built on the [Pimoroni Presto](https://shop.pim
 ## What it does
 
 - **Slideshow** — cycles through photos on the SD card with swipe left/right navigation
-- **Message delivery** — Shah sends a text, photo, or GIF via Telegram; the device LEDs pulse and a "tap to reveal" screen appears
-- **Reply buttons** — Beth taps to read, then replies with a preset button ("Love it", "Haha", "Call me!"); Shah gets a read receipt ("Seen ✓") the moment Beth taps
+- **Message delivery** — the sender sends a text, photo, or GIF via Telegram; the device LEDs pulse and a "tap to reveal" screen appears
+- **Reply buttons** — the recipient taps to read, then replies with a preset button ("Love it", "Haha", "Call me!"); the sender gets a read receipt ("Seen ✓") the moment the recipient taps
 - **LED mood system** — `/mood <colour>` sets the ambient LED glow and notification pulse colour, persisted across reboots
 - **WiFi AP portal** — if no known network is found on boot, the device broadcasts `OffenHerz-Setup` and serves a credential form at `http://192.168.4.1`; learned networks are saved to the SD card automatically
 
@@ -70,7 +70,7 @@ WIFI_NETWORKS = [
 ]
 
 BOT_TOKEN = "your-telegram-bot-token"   # from @BotFather
-SHAH_CHAT_ID = 123456789                # your Telegram user ID (integer)
+SENDER_CHAT_ID = 123456789              # your Telegram user ID (integer)
 ```
 
 Add as many networks as you like — the device scans first and connects to whichever has the best signal.
@@ -131,7 +131,7 @@ Copy everything in `src/` to the root of the Presto's flash. The device runs `bo
 
 If the device can't connect to any known network on boot, it broadcasts an open access point:
 
-- **SSID:** `OffenherzBox-Setup`
+- **SSID:** `OffenHerz-Setup`
 - **URL:** `http://192.168.4.1`
 
 Connect your phone, navigate to the URL, submit your credentials. The device reboots, connects, and saves the network to the SD card — no portal needed next time at that location.
