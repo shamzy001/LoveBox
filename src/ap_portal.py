@@ -4,20 +4,20 @@ import ujson
 import machine
 import time
 
-_AP_SSID = "OffenherzBox-Setup"
+_AP_SSID = "OffenHerz-Setup"
 _AP_IP = "192.168.4.1"
 
 _HTML = (
     "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n"
     "<!DOCTYPE html><html><head>"
     "<meta name=viewport content='width=device-width,initial-scale=1'>"
-    "<title>OffenherzBox WiFi</title>"
+    "<title>OffenHerz WiFi</title>"
     "<style>body{font-family:sans-serif;max-width:400px;margin:40px auto;padding:0 16px}"
     "input{display:block;width:100%;padding:10px;margin:8px 0 20px;font-size:1em;box-sizing:border-box;border:1px solid #ccc;border-radius:4px}"
     "button{padding:14px 28px;font-size:1em;background:#ff6482;color:#fff;border:none;border-radius:4px;width:100%}"
     "label{font-weight:bold}</style>"
     "</head><body>"
-    "<h2 style='color:#ff6482'>OffenherzBox WiFi Setup</h2>"
+    "<h2 style='color:#ff6482'>OffenHerz WiFi Setup</h2>"
     "<p>Enter the WiFi credentials for this location.</p>"
     "<form method=POST>"
     "<label>Network name (SSID)</label>"
@@ -32,7 +32,7 @@ _OK_HTML = (
     "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n"
     "<html><body style='font-family:sans-serif;text-align:center;margin-top:60px'>"
     "<h2 style='color:#ff6482'>Saved!</h2>"
-    "<p>OffenherzBox is restarting and connecting...</p>"
+    "<p>OffenHerz is restarting and connecting...</p>"
     "</body></html>"
 )
 
